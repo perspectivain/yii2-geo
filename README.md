@@ -17,7 +17,7 @@ Create and action to response in geo format
 ```
 public function actionCityDistricts()
 {
-  $model = new Kml;
+  $model = new Kml; //change to "new Geojson" to generate this file 
   $model->id = 'district';
   
   $districts = District::find()->all();
