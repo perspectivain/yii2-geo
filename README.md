@@ -2,7 +2,7 @@ Yii2 Geo
 =======
 An interface to generate geographic annotations in different formats.
 
-Currently supports KML and geoJSON formats.
+Currently supports KML and geoJSON formats and MultiPolygon, Point and Polygon types.
 
 ```
 More about geoJSON: http://geojson.org/geojson-spec.html
