@@ -36,7 +36,7 @@ public function actionCityDistricts()
       unset($polygon);
   }
   
-  return $model->toJSON();
+  return $model->output();
 }
 ```
 
