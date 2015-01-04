@@ -1,0 +1,26 @@
+{
+    "name": "perspectivain/yii2-geo",
+    "description": "An interface to generate geographic annotations in different formats",
+    "keywords": ["kml", "geojson", "Yii2"],
+    "homepage": "https://github.com/perspectivain/yii2-geo",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Juliano Baggio di Sopra", "email": "juliano@perspectiva.in"
+        }
+    ],
+    "support": {
+        "email": "juliano@perspectiva.in",
+        "issues": "https://github.com/perspectivain/yii2-geo/issues",
+        "wiki": "https://github.com/perspectivain/yii2-geo/wiki",
+        "source": "https://github.com/perspectivain/yii2-geo"
+    },
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "perspectivain\\geo\\": "lib"
+        }
+    }
+}
