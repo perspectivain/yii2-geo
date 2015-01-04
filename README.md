@@ -17,8 +17,8 @@ Create and action to response in geo format
 ```
 public function actionCityDistricts()
 {
-  $model = new Kml; //change to "new Geojson" to generate this file 
-  $model->id = 'district';
+  $document = new Kml; //change to "new Geojson" to generate this file 
+  $document->id = 'district';
   
   $districts = District::find()->all();
   foreach($districts as $district) {
@@ -32,11 +32,11 @@ public function actionCityDistricts()
           unset($point);
       }
   
-      $model->add($polygon);
+      $document->add($polygon);
       unset($polygon);
   }
   
-  return $model->output();
+  return $document->output();
 }
 ```
 
