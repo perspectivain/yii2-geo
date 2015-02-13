@@ -1,5 +1,5 @@
 <?php
-namespace app\extensions\geom\validators;
+namespace perspectivain\geo\validators;
 
 use Yii;
 

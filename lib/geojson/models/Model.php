@@ -1,5 +1,5 @@
 <?php
-namespace app\extensions\geom\geojson\models;
+namespace perspectivain\geo\geojson\models;
 
 use Yii;
 use yii\base\Model as YiiModel;

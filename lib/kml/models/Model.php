@@ -1,5 +1,5 @@
 <?php
-namespace app\extensions\geom\kml\models;
+namespace perspectivain\geo\kml\models;
 
 use Yii;
 use yii\base\Model as YiiModel;

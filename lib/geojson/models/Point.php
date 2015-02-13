@@ -1,5 +1,5 @@
 <?php
-namespace app\extensions\geom\geojson\models;
+namespace perspectivain\geo\geojson\models;
 
 class Point extends Model
 {
@@ -19,7 +19,7 @@ class Point extends Model
     public function validateObject()
     {    
         if(!is_array($this->value)) {
-            $this->addError('valor', 'Tipo de variável inválida');
+            $this->addError('value', 'Invalid variable type');
         }
         
         if(
@@ -27,7 +27,7 @@ class Point extends Model
             (!isset($this->value[0]) || !isset($this->value[1])) ||
             (!is_numeric($this->value[0]) || !is_numeric($this->value[1])) 
         ){
-            $this->addError('valor', 'Coordenadas inválidas');
+            $this->addError('value', 'Invalid coordinates');
         }
     }
     
@@ -37,7 +37,7 @@ class Point extends Model
     public function attributeLabels()
     {
         return [
-            'value' => 'Ponto',
+            'value' => 'Point',
         ];
     }
     

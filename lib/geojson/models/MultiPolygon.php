@@ -1,5 +1,5 @@
 <?php
-namespace app\extensions\geom\geojson\models;
+namespace perspectivain\geo\geojson\models;
 
 class MultiPolygon extends Model
 {
@@ -19,17 +19,17 @@ class MultiPolygon extends Model
     public function validateObject()
     {
         if(!is_array($this->value)) {
-            $this->addError('valor', 'Tipo de variável inválida');
+            $this->addError('value', 'Invalid variable value');
         }
         
         if(count($this->value) == 0){
-            $this->addError('valor', 'Coordenadas inválidas');
+            $this->addError('value', 'Invalid coordinates');
         }
         
         foreach($this->value as $object) {
             
             if(!$object->validate()) {
-                $this->addError('valor', 'Tipo de variável inválida');
+                $this->addError('value', 'Invalid variable type');
                 break;
             }
         }
@@ -41,7 +41,7 @@ class MultiPolygon extends Model
     public function attributeLabels()
     {
         return [
-            'value' => 'MultiPolígono',
+            'value' => 'MultiPolygon',
         ];
     }
     

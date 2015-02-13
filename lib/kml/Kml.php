@@ -1,15 +1,15 @@
 <?php
-namespace app\extensions\geom\kml;
+namespace perspectivain\geo\kml;
 
 use Yii;
 
 /**
- * Interface to generate geojson file
+ * Interface to generate kml file
  */
 class Kml
 {
     /**
-     * Nome do identificador do elemento
+     * Object ID
      */
     public $id = 'object';
 
@@ -19,6 +19,10 @@ class Kml
      */
     private $_items = [];
 
+	/**
+     * @param Object $object
+     * @return void
+     */ 
     public function add($object)
     {
         $class = get_class($object);
@@ -29,7 +33,10 @@ class Kml
         $this->_items[] = $object;
     }
 
-    public function toJSON()
+	/**
+     * @return XML response
+     */ 
+    public function output()
     {
         $dom = new \DOMDocument('1.0','UTF-8');
 

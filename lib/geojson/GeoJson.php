@@ -1,5 +1,5 @@
 <?php
-namespace app\extensions\geom;
+namespace perspectivain\geo\geojson;
 
 use Yii;
 
@@ -14,6 +14,10 @@ class GeoJson
      */
     private $_items = [];
     
+    /**
+     * @param Object $object
+     * @return void
+     */ 
     public function add($object) 
     {
         $class = get_class($object);
@@ -24,7 +28,10 @@ class GeoJson
         $this->_items[] = $object;
     }
     
-    public function toJSON()
+    /**
+     * @return XML response
+     */ 
+    public function output()
     {
         $features = [];
 
