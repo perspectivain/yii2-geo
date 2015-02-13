@@ -15,6 +15,10 @@ Usage
 Create and action to response in geo format
 
 ```
+use perspectivain\geo\kml\Kml;
+use perspectivain\geo\kml\models\Polygon;
+use perspectivain\geo\kml\models\Point;
+
 public function actionCityDistricts()
 {
   $document = new Kml; //change to "new Geojson" to generate this file 

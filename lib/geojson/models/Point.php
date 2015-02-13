@@ -6,7 +6,7 @@ class Point extends Model
     /**
      * @inheritdoc 
      */
-    protected $type = 'Point';
+    public $type = 'Point';
     
     /**
      * @inheritdoc 

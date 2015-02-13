@@ -6,7 +6,7 @@ class MultiPolygon extends Model
     /**
      * @inheritdoc 
      */
-    protected $type = 'MultiPolygon';
+    public $type = 'MultiPolygon';
     
     /**
      * @inheritdoc 
@@ -55,11 +55,11 @@ class MultiPolygon extends Model
             return null;
         }
         
-        $coordinates = [];
-        foreach($this->value as $polygon) {
-            $coordinates[] = $polygon->value;
+        $coordinates = '';
+        foreach($this->value as $point) {
+            $coordinates .= (float) $point->value[0] . ',' . (float) $point->value[1] . ','  . 0 . ' ';
         }
 
-        return [$this->type => ['coordinates' => $coordinates]];
+        return $coordinates;
     }
 }

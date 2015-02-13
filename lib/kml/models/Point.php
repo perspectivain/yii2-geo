@@ -6,7 +6,7 @@ class Point extends Model
     /**
      * @inheritdoc 
      */
-    protected $type = 'Point';
+    public $type = 'Point';
     
     /**
      * @inheritdoc 
@@ -50,6 +50,6 @@ class Point extends Model
             return null;
         }
 
-        return [$this->type => ['coordinates' => $coordinates]];
+        return (float) $this->value[0] . ',' . (float) $this->value[1] . ','  . 0 . ' ';
     }
 }

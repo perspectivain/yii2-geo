@@ -6,7 +6,7 @@ class MultiPolygon extends Model
     /**
      * @inheritdoc 
      */
-    protected $type = 'MultiPolygon';
+    public $type = 'MultiPolygon';
     
     /**
      * @inheritdoc 

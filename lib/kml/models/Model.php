@@ -13,7 +13,7 @@ abstract class Model extends YiiModel
      * Type of object
      * @var mixed 
      */
-    protected $type;
+    public $type;
     
     /**
      * Value of object

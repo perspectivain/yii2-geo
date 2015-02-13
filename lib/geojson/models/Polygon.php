@@ -6,7 +6,7 @@ class Polygon extends Model
     /**
      * @inheritdoc 
      */
-    protected $type = 'Polygon';
+    public $type = 'Polygon';
     
     /**
      * @inheritdoc 
