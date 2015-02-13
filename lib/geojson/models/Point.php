@@ -4,35 +4,41 @@ namespace perspectivain\geo\geojson\models;
 class Point extends Model
 {
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public $type = 'Point';
-    
+
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public $value;
-    
+
     /**
-     * @inheritdoc 
+     * Custom properties
+     * @var array
+     */
+    public $extendedData = [];
+
+    /**
+     * @inheritdoc
      */
     public function validateObject()
-    {    
+    {
         if(!is_array($this->value)) {
             $this->addError('value', 'Invalid variable type');
         }
-        
+
         if(
             count($this->value) != 2 ||
             (!isset($this->value[0]) || !isset($this->value[1])) ||
-            (!is_numeric($this->value[0]) || !is_numeric($this->value[1])) 
+            (!is_numeric($this->value[0]) || !is_numeric($this->value[1]))
         ){
             $this->addError('value', 'Invalid coordinates');
         }
     }
-    
+
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -40,9 +46,9 @@ class Point extends Model
             'value' => 'Point',
         ];
     }
-    
+
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public function output()
     {

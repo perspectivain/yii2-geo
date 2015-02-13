@@ -5,42 +5,48 @@ use Yii;
 use yii\base\Model as YiiModel;
 
 /**
- * A geojson abstract model object 
+ * A geojson abstract model object
  */
 abstract class Model extends YiiModel
 {
     /**
      * Type of object
-     * @var mixed 
+     * @var mixed
      */
     public $type;
-    
+
     /**
      * Value of object
-     * @var mixed 
+     * @var mixed
      */
     public $value;
-    
+
     /**
-     * Validation rule for object 
+     * Custom properties
+     * @var array
+     */
+    public $extendedData = [];
+
+    /**
+     * Validation rule for object
      * @uses model errors
      * @return void
      */
     abstract protected function validateObject();
-    
+
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['value'], 'required'],  
+            [['value'], 'required'],
             [['value'], 'validateObject'],
         ];
     }
-    
+
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -48,7 +54,7 @@ abstract class Model extends YiiModel
             'value' => 'Geojson Object',
         ];
     }
- 
+
     /**
      * Generate the output of geo object
      * @return string

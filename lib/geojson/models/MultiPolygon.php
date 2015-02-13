@@ -4,39 +4,45 @@ namespace perspectivain\geo\geojson\models;
 class MultiPolygon extends Model
 {
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public $type = 'MultiPolygon';
-    
+
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public $value;
-    
+
     /**
-     * @inheritdoc 
+     * Custom properties
+     * @var array
+     */
+    public $extendedData = [];
+
+    /**
+     * @inheritdoc
      */
     public function validateObject()
     {
         if(!is_array($this->value)) {
             $this->addError('value', 'Invalid variable value');
         }
-        
+
         if(count($this->value) == 0){
             $this->addError('value', 'Invalid coordinates');
         }
-        
+
         foreach($this->value as $object) {
-            
+
             if(!$object->validate()) {
                 $this->addError('value', 'Invalid variable type');
                 break;
             }
         }
     }
-    
+
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -44,7 +50,7 @@ class MultiPolygon extends Model
             'value' => 'MultiPolygon',
         ];
     }
-    
+
     /**
      * Generate the output of geo object
      * @return mixed(array|null)
@@ -54,7 +60,7 @@ class MultiPolygon extends Model
         if(!$this->type || !$this->validate()) {
             return null;
         }
-        
+
         $coordinates = [];
         foreach($this->value as $polygon) {
             $coordinates[] = $polygon->value;

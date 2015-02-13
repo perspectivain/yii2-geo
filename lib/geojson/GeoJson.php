@@ -4,52 +4,53 @@ namespace perspectivain\geo\geojson;
 use Yii;
 
 /**
- * Interface to generate geojson file 
+ * Interface to generate geojson file
  */
 class GeoJson
 {
     /**
-     * List of items to output 
+     * List of items to output
      * @var array
      */
     private $_items = [];
-    
+
     /**
      * @param Object $object
      * @return void
-     */ 
-    public function add($object) 
+     */
+    public function add($object)
     {
         $class = get_class($object);
         if(!$object->validate()) {
             return false;
         }
-        
+
         $this->_items[] = $object;
     }
-    
+
     /**
      * @return XML response
-     */ 
+     */
     public function output()
     {
         $features = [];
 
         foreach($this->_items as $object) {
-            
+
             $features[] = [
-                'type' => 'Feature', 
+                'type' => 'Feature',
                 'properties' => [
-                    'strokeWeight' => 1, 
+                    'strokeWeight' => 1,
                     'fillColor' => 'black',
                     'fillOpacity' => 1
                 ],
                 'geometry' => $object->output(),
+                'properties' => $object->extendendData,
             ];
         }
 
         \Yii::$app->response->format = 'xml';
-        
+
         return [
             'type' => 'FeatureCollection',
             'features' => $features,

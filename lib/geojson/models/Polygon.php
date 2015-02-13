@@ -4,28 +4,34 @@ namespace perspectivain\geo\geojson\models;
 class Polygon extends Model
 {
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public $type = 'Polygon';
-    
+
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public $value;
-    
+
     /**
-     * @inheritdoc 
+     * Custom properties
+     * @var array
+     */
+    public $extendedData = [];
+
+    /**
+     * @inheritdoc
      */
     public function validateObject()
     {
         if(!is_array($this->value)) {
             $this->addError('value', 'Invalid variable value');
         }
-        
+
         if(count($this->value) == 0){
             $this->addError('value', 'Invalid coordinates');
         }
-        
+
         foreach($this->value as $object) {
             if(!$object->validate()) {
                 $this->addError('value', 'Invalid variable type');
@@ -33,9 +39,9 @@ class Polygon extends Model
             }
         }
     }
-    
+
     /**
-     * @inheritdoc 
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -43,7 +49,7 @@ class Polygon extends Model
             'value' => 'Polygon',
         ];
     }
-    
+
     /**
      * Generate the output of geo object
      * @return mixed(array|null)
@@ -53,7 +59,7 @@ class Polygon extends Model
         if(!$this->type || !$this->validate()) {
             return null;
         }
-        
+
         $coordinates = [];
         foreach($this->value as $point) {
             $coordinates[] = [(float) $point->value[0], (float) $point->value[1]];

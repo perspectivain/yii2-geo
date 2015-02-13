@@ -22,7 +22,7 @@ class Kml
 	/**
      * @param Object $object
      * @return void
-     */ 
+     */
     public function add($object)
     {
         $class = get_class($object);
@@ -35,7 +35,7 @@ class Kml
 
 	/**
      * @return XML response
-     */ 
+     */
     public function output()
     {
         $dom = new \DOMDocument('1.0','UTF-8');
@@ -57,6 +57,22 @@ class Kml
             $objectNode = $dom->createElement($object->type);
             $placeNode->appendChild($objectNode);
             $objectNode->setAttribute('id',$this->id . $i);
+
+            if($object->extendedData) {
+
+                $extendedDataNode = $dom->createElement('ExtendedData');
+
+                foreach($object->extendedData as $key => $value) {
+
+                    $extendedDataDataNode = $dom->createElement('Data');
+                    $extendedDataDataNode->setAttribute('name', $key);
+
+                    $extendedDataValueNode = $dom->createElement('value', $value);
+                    $extendedDataDataNode->appendChild($extendedDataValueNode);
+
+                    $extendedDataNode->appendChild($extendedDataDataNode);
+                }
+            }
 
             $outerBundaryIsNode = $dom->createElement('outerBoundaryIs');
             $objectNode->appendChild($outerBundaryIsNode);
