@@ -72,6 +72,8 @@ class Kml
 
                     $extendedDataNode->appendChild($extendedDataDataNode);
                 }
+
+                $placeNode->appendChild($extendedDataNode);
             }
 
             $outerBundaryIsNode = $dom->createElement('outerBoundaryIs');
